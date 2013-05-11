@@ -1,0 +1,50 @@
+﻿<Window x:Class="FloWin.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FloWin"
+        xmlns:ctrl="clr-namespace:FloWin.Controls"
+        xmlns:view="clr-namespace:FloWin.View"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="{Binding Path=TogglePauseCommand.Label}" Command="{Binding Path=TogglePauseCommand}" />
+            <MenuItem Header="{Binding Path=ConfigCommand.Label}" Command="{Binding Path=ConfigCommand}" />
+            <MenuItem Header="{Binding Path=ExitCommand.Label}" Command="{Binding Path=ExitCommand}" />
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Canvas>
+        <Image Canvas.Left="0" Canvas.Top="0" Stretch="Fill">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup x:Name="backDrawing" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
+
+        <Image Name="simImage" Canvas.Left="0" Canvas.Top="0" Stretch="Fill">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup x:Name="simDrawing" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
+
+        <Image Canvas.Left="0" Canvas.Top="0" Stretch="Fill">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup x:Name="foreDrawing" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
+
+        <view:PourSourceView x:Name="pourSrcView" />
+    </Canvas>
+</Window>

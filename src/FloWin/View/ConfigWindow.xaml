@@ -1,0 +1,83 @@
+﻿<Window x:Class="FloWin.View.ConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prop="clr-namespace:FloWin.Properties"
+        xmlns:local="clr-namespace:FloWin"
+        xmlns:ctrls="clr-namespace:FloWin.Controls"
+        xmlns:view="clr-namespace:FloWin.View"
+        Title="ConfigWindow" SizeToContent="Height" Width="300">
+    <Window.Resources>
+        <view:KeysConverter x:Key="keysConverter" />
+        
+        <Style x:Key="LegendStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,5,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    
+    <TabControl>
+        <TabItem Header="{x:Static prop:Resources.ConfigStr_General}">
+        </TabItem>
+        
+        <TabItem Header="{x:Static prop:Resources.ConfigStr_Render}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <CheckBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                          Content="{x:Static prop:Resources.ConfigStr_DrawLiquid}"
+                          Margin="0,2,0,2"
+                          IsChecked="{Binding Path=DrawLiquid}"/>
+                
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Style="{StaticResource LegendStyle}">描画色</TextBlock>
+                <ctrls:ColorPicker Grid.Row="1" Grid.Column="1" 
+                                   Margin="0,2,0,2" VerticalAlignment="Center"
+                                   SelectedColor="{Binding Path=LiquidColor}"/>
+            </Grid>
+        </TabItem>
+        
+        <TabItem Header="{x:Static prop:Resources.ConfigStr_Keys}">
+            <Grid>
+                <ListView ItemsSource="{Binding Path=Keys}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="{x:Static prop:Resources.ConfigStr_Header_Operation}" 
+                                            DisplayMemberBinding="{Binding Label}" />
+                            
+                            <GridViewColumn Header="{x:Static prop:Resources.ConfigStr_Header_Keys}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox IsReadOnly="True" 
+                                                 GotFocus="KeyBindTextBox_GotFocus" LostFocus="KeyBindTextBox_LostFocus"
+                                                 Tag="{Binding Path=Index}">
+                                            <TextBox.Text>
+                                                <MultiBinding Converter="{StaticResource keysConverter}">
+                                                    <MultiBinding.Bindings>
+                                                        <Binding Path="Key" />
+                                                        <Binding Path="ModifierKeys" />
+                                                    </MultiBinding.Bindings>
+                                                </MultiBinding>
+                                            </TextBox.Text>
+                                        </TextBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
