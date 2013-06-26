@@ -10,7 +10,7 @@ namespace FloWin
     /// <summary>
     /// グローバルキーフック
     /// </summary>
-    class GlobalHook
+    public class GlobalHook
     {
         /// <summary>キーが押された</summary>
         public static event EventHandler<KeyEventArgs> KeyDown;

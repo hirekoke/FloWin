@@ -382,7 +382,7 @@ namespace FloWin.View
             {
                 _winUpdateTime = _model.WinEnum.LastUpdateTime;
                 _winText = new FormattedText(
-                    _model.WinEnum.NormalWindowString,
+                    _model.WinEnum.WindowString,
                     System.Globalization.CultureInfo.CurrentCulture,
                     System.Globalization.CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ?
                         FlowDirection.RightToLeft : FlowDirection.LeftToRight,

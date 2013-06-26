@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Media;
 
-namespace FloWin
+namespace FloWin.Controls
 {
     internal struct HsvColor
     {

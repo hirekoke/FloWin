@@ -97,7 +97,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ColorUtilities.cs" />
+    <Compile Include="Controls\ColorUtilities.cs" />
     <Compile Include="Controls\ColorCanvas.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="ViewModel\ConfigViewModel.cs" />
@@ -130,8 +130,8 @@
     <Compile Include="Simulation\Particle.cs" />
     <Compile Include="Simulation\Sph.cs" />
     <Compile Include="Common\ViewModelBase.cs" />
-    <Compile Include="Win32Api.cs" />
-    <Compile Include="WinEnumerator.cs" />
+    <Compile Include="Model\Win32Api.cs" />
+    <Compile Include="Model\WinEnumerator.cs" />
     <Page Include="View\ConfigWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
